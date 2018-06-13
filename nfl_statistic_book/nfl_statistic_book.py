@@ -1,8 +1,6 @@
-# -*- coding: utf-8 -*-
-
-#Next Steps:
-# - Get roster in a formatted kind of way
-# - View players stats
+#Next Steps: 
+# - Get roster in a formatted kind of way 
+# - View players stats 
 
 
 from team import Team
@@ -49,7 +47,7 @@ def generate_teams():
                 abbreviation = (data['conferenceteamstandings']['conference'][j]
                 ['teamentry'][i]['team']['Abbreviation'])
                 allTeams[team] = abbreviation
-
+        
     except requests.exceptions.RequestException:
         print('HTTP Request failed')
 
@@ -108,7 +106,7 @@ def exec_input(selection, current_team, to_clear = True, team_selected = False):
         if is_team(team_name):
             current_team = team_name
             create_team(get_abbreviation(team_name))
-
+            
         else:
             exec_input('1', current_team, False)
 
@@ -119,8 +117,8 @@ def exec_input(selection, current_team, to_clear = True, team_selected = False):
         clear()
         print('Available teams: \n')
         print_teams()
-        exec_input('1', False)
-
+        exec_input('1', current_team, to_clear=False)
+    
     elif selection is '3':
         clear()
         sys.exit('Have a great day')
@@ -234,7 +232,7 @@ def get_team_options(team):
         print('\n')
         exec_input(print_welcome(opening=False, team_selected=True),
                    current_team=team.name, to_clear=True, team_selected=True)
-
+    
 
 if __name__ == '__main__':
     user_name = get_credentials()[0].strip()
@@ -243,5 +241,5 @@ if __name__ == '__main__':
     team_selected = 'Bengals'
     generate_teams()
     selection = print_welcome()
-    exec_input(selection, team_selected)
+    exec_input(selection, team_selected, to_clear=False)
 
