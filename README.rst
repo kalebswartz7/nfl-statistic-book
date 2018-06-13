@@ -2,6 +2,9 @@
 nfl-statistic-book
 ==================
 
+.. image:: https://readthedocs.org/projects/nfl-statistic-book/badge/?version=latest
+:target: https://nfl-statistic-book.readthedocs.io/en/latest/?badge=latest
+:alt: Documentation Status
 
 Python application that retrieves information from MySportsFeed API based on NFL teams
 
