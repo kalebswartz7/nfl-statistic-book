@@ -3,6 +3,7 @@ nfl-statistic-book
 ==================
 
 .. image:: https://readthedocs.org/projects/nfl-statistic-book/badge/?version=latest
+   :target: https://nfl-statistic-book.readthedocs.io/en/latest/?badge=latest
 
 
 
