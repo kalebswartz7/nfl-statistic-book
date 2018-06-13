@@ -3,6 +3,7 @@ nfl-statistic-book
 ==================
 
 
+[![Documentation Status](https://readthedocs.org/projects/nfl-statistic-book/badge/?version=latest)](https://nfl-statistic-book.readthedocs.io/en/latest/?badge=latest)
 
 
 
