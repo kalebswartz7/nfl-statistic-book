@@ -25,6 +25,7 @@ wheels/
 *.egg
 MANIFEST
 secret.txt
+.idea/
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
