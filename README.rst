@@ -14,7 +14,11 @@ Python application that retrieves information from MySportsFeed API based on NFL
 Features
 --------
 
-* TODO
+* Collect NFL Team data from the MySportsFeed API
+* Ability to see any team's upcoming schedule as well as current roster 
+* Easy to use text-based interface 
+
+* Player search coming soon :)
 
 Credits
 -------
