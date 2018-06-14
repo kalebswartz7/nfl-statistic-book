@@ -34,14 +34,14 @@ setup(
     description="Python application that retrieves information from MySportsFeed API based on NFL teams",
     entry_points={
         'console_scripts': [
-            'nfl-statistic-book=nfl-statistic-book.cli:main',
+            'nfl_statistic_book=nfl_statistic_book.cli:main',
         ],
     },
     install_requires=requirements,
     long_description=readme + '\n\n' + history,
     include_package_data=True,
-    keywords='nfl-statistic-book',
-    name='nfl-statistic-book',
+    keywords='nfl_statistic_book',
+    name='nfl_statistic_book',
     packages=find_packages(include=['nfl-statistic-book']),
     setup_requires=setup_requirements,
     test_suite='tests',
