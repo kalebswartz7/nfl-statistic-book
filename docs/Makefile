@@ -4,7 +4,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = python -msphinx
-SPHINXPROJ    = nfl_statistic_book
+SPHINXPROJ    = nfl-statistic-book
 SOURCEDIR     = .
 BUILDDIR      = _build
 
