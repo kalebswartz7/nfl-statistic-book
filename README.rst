@@ -9,12 +9,19 @@ nfl-statistic-book
 
 Python application that retrieves information from MySportsFeed API based on NFL teams
 
+Note: User must have login credentials for MySportsFeed_ and add them to a separate file "secret.txt" for full access
+
+.. _MySportsFeed: https://www.mysportsfeeds.com/data-feeds
 
 
 Features
 --------
 
-* TODO
+* Collect NFL Team data from the MySportsFeed API
+* Ability to see any team's upcoming schedule as well as current roster 
+* Easy to use text-based interface 
+
+* Player search coming soon :)
 
 Credits
 -------
