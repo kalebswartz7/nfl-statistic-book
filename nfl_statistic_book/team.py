@@ -1,6 +1,8 @@
 import base64
 import requests
 import json
+import numpy as np
+import pandas as pd
 
 
 class Team:
@@ -24,7 +26,6 @@ class Team:
         self.positions = ['QB', 'RB', 'WR', 'TE', 'C', 'G',
                           'OT', 'LB', 'CB', 'DB', 'DE', 'SS', 'DT', 'K']
         self.roster_count = 0
-
 
     def get_name(self):
         """
@@ -72,7 +73,7 @@ class Team:
                 spaces = 80 - dataLength
                 print( gameData + ' ' * spaces + time)
             print('\n')
-        
+
         except requests.exceptions.RequestException:
             print('HTTP Request failed')
 
@@ -95,9 +96,9 @@ class Team:
             response = requests.get(
                 url='https://api.mysportsfeeds.com/v1.2/pull/nfl/2018-regular'
                     '/roster_players.json?',
-                params={ 
+                params={
                     'team' : self.get_name(),
-                    'position' : position 
+                    'position' : position
                 },
                 headers={
                     'Authorization': 'Basic ' + base64.b64encode
@@ -120,3 +121,69 @@ class Team:
 
         except requests.exceptions.RequestException:
             print('HTTP Request failed')
+
+    def get_player_stats(self, first_name, last_name, user_name, passw):
+        try:
+            response = requests.get(
+                url='https://api.mysportsfeeds.com/v1.2/pull/nfl/2017-regular/'
+                    'cumulative_player_stats.json?playerstats=Att,Comp,Yds,TD',
+                params={
+                    'team' : self.get_name()
+                },
+                headers={
+                    'Authorization': 'Basic ' + base64.b64encode
+                    ('{}:{}'.format(user_name,passw).encode('utf-8')).decode('ascii')
+                }
+            )
+            data = response.json()
+            for i in range(0, len(data['cumulativeplayerstats']['playerstatsentry'])):
+                player = data['cumulativeplayerstats']['playerstatsentry'][i]
+                if player['player']['LastName'] == last_name and player['player']['FirstName'] == first_name:
+                    if player['player']['Position'] == 'QB':
+                        self._get_qb_stats(player)
+                    elif player['player']['Position'] == 'RB':
+                        self._get_rb_stats(player)
+                    elif player['player']['Position'] == 'WR':
+                        self._get_wr_stats(player)
+                    elif player['player']['Position'] == 'TE':
+                        self._get_wr_stats(player)
+                    else:
+                        print(player)
+                        print("Player stats are not available")
+        except requests.exceptions.RequestException:
+            print('HTTP Request failed')
+
+    def _get_qb_stats(self, player):
+        stats = ['PassAttempts', 'PassCompletions', 'PassYards', 'PassTD', 'RushAttempts', 'RushYards']
+        self._print_data(stats, player)
+    def _get_rb_stats(self, player):
+        stats = ['RushAttempts', 'RushYards', 'RushTD', 'RecYards', 'RecTD' ]
+        self._print_data(stats, player)
+    def _get_wr_stats(self, player):
+        stats = ['RecYards', 'RecTD']
+        self._print_data(stats, player)
+
+    def _print_data(self, stats, player):
+        all_stats = []
+        for i in range(0, len(stats)):
+            stat = stats[i]
+            stat_list = (list(player['stats'][stat].values()))
+            stat_title = stat_list[0] + " " + stat_list[1]
+            stat_value = stat_list[2]
+            stat_list = []
+            stat_list.append(stat_title)
+            stat_list.append(stat_value)
+            all_stats.append(stat_list)
+        df = pd.DataFrame(np.array(all_stats))
+        print(df)
+
+
+
+
+
+
+
+
+
+
+

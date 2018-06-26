@@ -1,6 +1,6 @@
-#Next Steps: 
-# - Get roster in a formatted kind of way 
-# - View players stats 
+#Next Steps:
+# - Get roster in a formatted kind of way
+# - View players stats
 
 
 from team import Team
@@ -47,7 +47,7 @@ def generate_teams():
                 abbreviation = (data['conferenceteamstandings']['conference'][j]
                 ['teamentry'][i]['team']['Abbreviation'])
                 allTeams[team] = abbreviation
-        
+
     except requests.exceptions.RequestException:
         print('HTTP Request failed')
 
@@ -106,7 +106,7 @@ def exec_input(selection, current_team, to_clear = True, team_selected = False):
         if is_team(team_name):
             current_team = team_name
             create_team(get_abbreviation(team_name))
-            
+
         else:
             exec_input('1', current_team, False)
 
@@ -118,13 +118,13 @@ def exec_input(selection, current_team, to_clear = True, team_selected = False):
         print('Available teams: \n')
         print_teams()
         exec_input('1', current_team, to_clear=False)
-    
+
     elif selection is '3':
         clear()
         sys.exit('Have a great day')
 
     else:
-        exec_input(get_selection())
+        exec_input(get_selection(), current_team)
 
 
 def create_team(team_abbreviation):
@@ -198,7 +198,7 @@ def get_abbreviation(team_name):
             return allTeams[key]
 
 
-def get_team_options(team):
+def get_team_options(team, printWelcome=True):
     """
     Display user options once a team has been selected
 
@@ -210,11 +210,12 @@ def get_team_options(team):
 
     """
     clear()
-    print(f'TEAM SELECTED: {team.get_name()} \n\n(1) Get 2018-2019 Schedule\n(2)'
-          f' Get Roster\n(3) Choose another team ')
+    if printWelcome:
+        print(f'TEAM SELECTED: {team.get_name()} \n\n(1) Get 2018-2019 Schedule\n(2)'
+          f' Get Roster\n(3) Search for player\n(4) Choose another team ')
     choice = input('\n Selection: ')
 
-    if choice is '3':
+    if choice is '4':
         clear()
         print('\n')
         exec_input('1', current_team=team.name)
@@ -232,7 +233,21 @@ def get_team_options(team):
         print('\n')
         exec_input(print_welcome(opening=False, team_selected=True),
                    current_team=team.name, to_clear=True, team_selected=True)
-    
+
+    elif choice is '3':
+        clear()
+        player_name = input("Please enter <first_name> <last_name>: ")
+        try:
+            first_name = player_name.split()[0]
+            last_name = player_name.split()[1]
+            team.get_player_stats(first_name, last_name, user_name, passw)
+        except:
+            print("Not valid player name!")
+            get_team_options(team)
+    else:
+        print("invalid input. ")
+        get_team_options(team, False)
+
 
 if __name__ == '__main__':
     user_name = get_credentials()[0].strip()
