@@ -1,5 +1,5 @@
 requests==2.19.0
-numpy
+numpy==1.14.5
 base64
 os
 sys
