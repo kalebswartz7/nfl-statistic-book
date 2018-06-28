@@ -1,6 +1,5 @@
 requests==2.19.0
 numpy
-base64
 os
 sys
 pandas
