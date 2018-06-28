@@ -3,6 +3,6 @@ numpy
 base64
 os
 sys
-pandas
+pandas==0.23.1
 json
 
