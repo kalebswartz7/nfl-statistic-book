@@ -1,5 +1,4 @@
 requests==2.19.0
 numpy
 pandas
-json
 
