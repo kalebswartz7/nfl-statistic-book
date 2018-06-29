@@ -2,8 +2,7 @@
 # - Get roster in a formatted kind of way
 # - View players stats
 
-
-from team.py import Team
+from team import Team
 import base64
 import requests
 import os
