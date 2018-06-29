@@ -5,6 +5,7 @@
 import unittest
 
 from nfl_statistic_book import nfl_statistic_book
+from nfl_statistic_book import team
 
 
 class TestNfl_statistic_book(unittest.TestCase):
