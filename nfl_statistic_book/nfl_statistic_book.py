@@ -3,7 +3,7 @@
 # - View players stats
 
 
-from team import Team
+from team.py import Team
 import base64
 import requests
 import os
