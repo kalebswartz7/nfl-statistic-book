@@ -2,11 +2,6 @@
 nfl-statistic-book
 ==================
 
-.. image:: https://readthedocs.org/projects/nfl-statistic-book/badge/?version=latest
-   :target: https://nfl-statistic-book.readthedocs.io/en/latest/?badge=latest
-
-
-
 Python application that retrieves information from MySportsFeed API based on NFL teams
 
 Note: User must have login credentials for MySportsFeed_ and add them to a separate file "secret.txt" for full access
