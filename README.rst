@@ -1,3 +1,5 @@
+.. image:: https://travis-ci.com/kalebswartz7/nfl-statistic-book.svg?branch=master
+    :target: https://travis-ci.com/kalebswartz7/nfl-statistic-book
 ==================
 nfl-statistic-book
 ==================
