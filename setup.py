@@ -42,7 +42,7 @@ setup(
     include_package_data=True,
     keywords='nfl_statistic_book',
     name='nfl_statistic_book',
-    packages=find_packages(include=['nfl-statistic-book']),
+    packages=find_packages(include=['nfl_statistic_book']),
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
