@@ -16,6 +16,7 @@ Features
 
 * Collect NFL Team data from the MySportsFeed API
 * Ability to see any team's upcoming schedule as well as current roster 
+* Ability to see search for and see any player's 2017 stats
 * Easy to use text-based interface 
 
 Credits
