@@ -2,7 +2,7 @@
 # - Get roster in a formatted kind of way
 # - View players stats
 
-from .team import Team
+from team import Team
 import base64
 import requests
 import os
@@ -27,8 +27,7 @@ def generate_teams():
     """
     try:
         response = requests.get(
-            url='https://api.mysportsfeeds.com/v1.2/pull/nfl/2018-regular/'
-                'conference_team_standings.json?teamstats=W,L,T,PF,PA',
+            url='http://api.mysportsfeeds.com/v1.2/pull/nfl/2020-2021-regular/conference_team_standings.json',
             params={
             },
             headers={
@@ -46,7 +45,6 @@ def generate_teams():
                 abbreviation = (data['conferenceteamstandings']['conference'][j]
                 ['teamentry'][i]['team']['Abbreviation'])
                 allTeams[team] = abbreviation
-
     except requests.exceptions.RequestException:
         print('HTTP Request failed')
 
@@ -210,7 +208,7 @@ def get_team_options(team, printWelcome=True):
     """
     clear()
     if printWelcome:
-        print(f'TEAM SELECTED: {team.get_name()} \n\n(1) Get 2018-2019 Schedule\n(2)'
+        print(f'TEAM SELECTED: {team.get_name()} \n\n(1) Get 2020-2021 Schedule\n(2)'
           f' Get Roster\n(3) Search for player\n(4) Choose another team ')
     choice = input('\n Selection: ')
 

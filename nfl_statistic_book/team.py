@@ -49,7 +49,7 @@ class Team:
         """
         try:
             response = requests.get(
-                url='https://api.mysportsfeeds.com/v1.2/pull/nfl/2018-regular'
+                url='https://api.mysportsfeeds.com/v1.2/pull/nfl/2020-2021-regular'
                     '/full_game_schedule.json?',
                 params={
                     'team' : self.get_name()
@@ -60,7 +60,7 @@ class Team:
                 }
             )
             data = response.json()
-            print(' 2018 Schedule: \n')
+            print(' 2020 Schedule: \n')
             for i in range(0, 16):
                 date = data['fullgameschedule']['gameentry'][i]['date']
                 awayTeam = data['fullgameschedule']['gameentry'][i]['awayTeam']['City'] \
@@ -94,7 +94,7 @@ class Team:
         """
         try:
             response = requests.get(
-                url='https://api.mysportsfeeds.com/v1.2/pull/nfl/2018-regular'
+                url='https://api.mysportsfeeds.com/v1.2/pull/nfl/2020-2021-regular'
                     '/roster_players.json?',
                 params={
                     'team' : self.get_name(),
