@@ -1,4 +1,4 @@
 requests==2.19.0
 numpy
-pandas
+pandas==2.1.0
 
